@@ -1,6 +1,7 @@
 const gulp = require('gulp');
 const sass = require('gulp-sass');
 const del = require('del');
+const deploy = require('gulp-gh-pages');
 
 const src = "./src"
 const dist = "./dist"
@@ -29,6 +30,12 @@ gulp.task('clean', () => {
     return del([
         `${dist}/*`,
     ]);
+});
+
+// Deploy to Github pages
+gulp.task('deploy', function () {
+    return gulp.src("./dist/**/*")
+      .pipe(deploy())
 });
 
 // Dev mode - watch for changes and recompile
