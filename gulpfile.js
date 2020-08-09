@@ -12,6 +12,12 @@ gulp.task('copy-html', () => {
       .pipe(gulp.dest(dist))
 })
 
+// Copy JS files to dist
+gulp.task('copy-js', () => {
+    return gulp.src(`${src}/**/*.js`)
+      .pipe(gulp.dest(dist))
+})
+
 // Copy images to dist
 gulp.task('copy-images', () => {
     return gulp.src(`${src}/images/**/*.{png,gif,jpg,svg}`)
@@ -41,9 +47,9 @@ gulp.task('deploy', function () {
 // Dev mode - watch for changes and recompile
 gulp.task('watch', () => {
   gulp.watch(`${src}/**/*`, (done) => {
-      gulp.series(['clean', 'copy-html', 'copy-images', 'styles'])(done);
+      gulp.series(['clean', 'copy-html', 'copy-js', 'copy-images', 'styles'])(done);
   });
 });
 
 // Default talk - build everything for production
-gulp.task('default', gulp.series(['clean', 'copy-html', 'copy-images', 'styles']));
+gulp.task('default', gulp.series(['clean', 'copy-html', 'copy-js', 'copy-images', 'styles']));
