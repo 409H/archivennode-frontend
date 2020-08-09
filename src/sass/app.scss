@@ -103,12 +103,14 @@ body {
         }
     }
 
-    button {
+    .link-button {
         padding: 2em 3em;
         text-transform: uppercase;
         border-radius: 2px;
         border: 0px;
         background: $COLOR-BUTTON-BG;
+        color: $COLOR-TEXT;
+        text-decoration: none;
     }
 }
 
